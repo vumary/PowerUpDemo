@@ -15,6 +15,8 @@ right(new TalonSRX(RIGHT_MOTOR)) {}
 void Drivetrain::InitDefaultCommand() {
   // Set the default command for a subsystem here.
   // SetDefaultCommand(new MySpecialCommand());
+  left->SetInverted(true);
+  //right->SetInverted(true);
   SetDefaultCommand(new TankDrive());
 }
 

@@ -7,6 +7,7 @@
 
 #include "commands/TankDrive.h"
 #include "Robot.h"
+#include <iostream>
 
 TankDrive::TankDrive() {
   // Use Requires() here to declare subsystem dependencies
@@ -19,8 +20,8 @@ void TankDrive::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void TankDrive::Execute() {
-
-  Robot::m_drive->tankDrive(Robot::m_oi->getGameController()->GetY(), Robot::m_oi->getGameController()->GetY());
+  std::cout<<"testing"<<std::endl;
+  Robot::m_drive->tankDrive(Robot::m_oi->getGameController()->GetY(), Robot::m_oi->getGameController()->GetRawAxis(3));
 }
 
 // Make this return true when this Command no longer needs to run execute()
