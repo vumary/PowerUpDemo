@@ -5,22 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "subsystems/Arm.h"
 
-#include "frc/Joystick.h"
-#include "ctre/Phoenix.h"
-#include "frc/WPILib.h"
+Arm::Arm() : Subsystem("Arm"), arm(new TalonSRX(5)) {}
 
-using namespace frc;
-
-class OI {
- private:
-  Joystick* gameController;
-  JoystickButton* armMoveUp;
-  JoystickButton* armMoveDown;
-  JoystickButton* outtakeButton;
-  JoystickButton* intakeButton;
- public:
-  Joystick* getGameController();
-  OI();
-};
+void Arm::InitDefaultCommand() {
+  // Set the default command for a subsystem here.
+  // SetDefaultCommand(new MySpecialCommand());
+}
+void Arm::moveArm(double power) {
+  arm->Set(ControlMode::PercentOutput, power);
+}
+// Put methods for controlling this subsystem
+// here. Call these from Commands.

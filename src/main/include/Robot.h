@@ -13,17 +13,21 @@
 
 #include "OI.h"
 
-
+#include "subsystems/Lift.h"
 #include "commands/TankDrive.h"
-
+#include "subsystems/Arm.h"
 #include "subsystems/Drivetrain.h"
+#include "subsystems/Catcher.h"
 
 class Robot : public frc::TimedRobot {
  public:
  
-  static OI* m_oi;
+  static Catcher* m_catcher;
   static Drivetrain* m_drive;
-
+  static Lift* m_lift;
+  static Arm*m_arm;
+  static OI* m_oi;
+  
   void RobotInit() override;
   void RobotPeriodic() override;
   void DisabledInit() override;

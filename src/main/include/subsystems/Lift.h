@@ -6,21 +6,17 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
-
-#include "frc/Joystick.h"
+#include <frc/commands/Subsystem.h>
 #include "ctre/Phoenix.h"
-#include "frc/WPILib.h"
 
-using namespace frc;
-
-class OI {
+class Lift : public frc::Subsystem {
  private:
-  Joystick* gameController;
-  JoystickButton* armMoveUp;
-  JoystickButton* armMoveDown;
-  JoystickButton* outtakeButton;
-  JoystickButton* intakeButton;
+ TalonSRX* liftMotor;
+  // It's desirable that everything possible under private except
+  // for methods that implement subsystem capabilities
+
  public:
-  Joystick* getGameController();
-  OI();
+  Lift();
+  void lifting(double p);
+  void InitDefaultCommand() override;
 };

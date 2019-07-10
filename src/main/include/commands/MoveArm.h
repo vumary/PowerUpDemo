@@ -7,20 +7,16 @@
 
 #pragma once
 
-#include "frc/Joystick.h"
-#include "ctre/Phoenix.h"
-#include "frc/WPILib.h"
+#include <frc/commands/Command.h>
+#include "subsystems/Arm.h"
 
-using namespace frc;
-
-class OI {
- private:
-  Joystick* gameController;
-  JoystickButton* armMoveUp;
-  JoystickButton* armMoveDown;
-  JoystickButton* outtakeButton;
-  JoystickButton* intakeButton;
+class MoveArm : public frc::Command {
  public:
-  Joystick* getGameController();
-  OI();
+  MoveArm(double input);
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
+  double val;
 };

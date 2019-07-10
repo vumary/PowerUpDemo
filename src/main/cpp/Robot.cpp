@@ -9,18 +9,26 @@
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 #include "subsystems/Drivetrain.h"
+#include "subsystems/Arm.h"
 #include "Robot.h"
 
 //ExampleSubsystem Robot::m_subsystem;
-OI* Robot::m_oi;
+Catcher* Robot::m_catcher;
 Drivetrain* Robot::m_drive;
+Arm* Robot::m_arm;
+Lift* Robot::m_lift; 
+OI* Robot::m_oi;
 
 void Robot::RobotInit() {
   //m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
   //m_chooser.AddOption("My Auto", &m_myAuto);
   //frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
   m_drive = new Drivetrain();
+  m_lift = new Lift();
+  m_arm = new Arm();
+  m_catcher = new Catcher();
   m_oi = new OI();
+
 }
 
 /**

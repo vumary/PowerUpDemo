@@ -8,10 +8,20 @@
 #include "OI.h"
 #include <WPILib.h>
 #include "ctre/Phoenix.h"
+#include "commands/MoveArm.h"
+#include "commands/Intake.h"
 
-OI::OI() : gameController(new Joystick(0))
+OI::OI() : gameController(new Joystick(0)), 
+armMoveUp(new JoystickButton(gameController, 6)), 
+armMoveDown(new JoystickButton(gameController, 5)),
+intakeButton(new JoystickButton(gameController, 8)),
+outtakeButton(new JoystickButton(gameController, 7))
 {
-  // Process operator interface input here.
+  armMoveUp->WhileHeld(new MoveArm(-0.5));
+  armMoveDown->WhileHeld(new MoveArm(0.5));
+  intakeButton->WhileHeld(new Intake(1));
+  outtakeButton->WhileHeld(new Intake(-1));
+
 }
 
 Joystick* OI::getGameController(){
