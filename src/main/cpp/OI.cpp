@@ -19,11 +19,22 @@ outtakeButton(new JoystickButton(gameController, 7))
 {
   armMoveUp->WhileHeld(new MoveArm(-0.5));
   armMoveDown->WhileHeld(new MoveArm(0.5));
-  intakeButton->WhileHeld(new Intake(1));
-  outtakeButton->WhileHeld(new Intake(-1));
+  
+  intakeButton->WhenPressed(new Intake(1));
+  intakeButton->WhenReleased(new Intake(0));
+  
+  outtakeButton->WhenPressed(new Intake(-1));
+  outtakeButton->WhenReleased(new Intake(0));
+
+  //intakeButton->WhileHeld(new Intake(1));
+  //outtakeButton->WhileHeld(new Intake(-1));
 
 }
 
 Joystick* OI::getGameController(){
   return gameController;
+}
+
+JoystickButton* OI::getIntake(){
+  return intakeButton;
 }

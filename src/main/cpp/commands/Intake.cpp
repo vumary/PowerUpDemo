@@ -7,6 +7,7 @@
 
 #include "commands/Intake.h"
 #include "Robot.h"
+#include "OI.h"
 
 Intake::Intake(double input) {
   // Use Requires() here to declare subsystem dependencies
@@ -24,11 +25,13 @@ void Intake::Execute() {
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool Intake::IsFinished() { return false; }
+bool Intake::IsFinished() {}
 
 // Called once after isFinished returns true
 void Intake::End() {}
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void Intake::Interrupted() {}
+void Intake::Interrupted() {
+  Robot::m_catcher->intake(0);
+}

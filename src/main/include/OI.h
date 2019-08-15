@@ -22,5 +22,6 @@ class OI {
   JoystickButton* intakeButton;
  public:
   Joystick* getGameController();
+  JoystickButton* getIntake();
   OI();
 };
